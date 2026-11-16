@@ -1,0 +1,225 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý sản phẩm</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        input {
+            width: 95%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: white;
+            margin: 3px;
+        }
+
+        .them {
+            background-color: #28a745;
+        }
+
+        .sua {
+            background-color: #007bff;
+        }
+
+        .xoa {
+            background-color: #140c0d;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 25px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #0c1418;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>QUẢN LÝ SẢN PHẨM</h1>
+
+    <h3>Thông tin sản phẩm</h3>
+
+    <input type="text" id="masp" placeholder="Nhập mã sản phẩm">
+
+    <input type="text" id="tensp" placeholder="Nhập tên sản phẩm">
+
+    <input type="number" id="giasp" placeholder="Nhập giá sản phẩm">
+
+    <button class="them" onclick="themSP()">Thêm sản phẩm</button>
+
+    <h3>Danh sách sản phẩm</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Mã SP</th>
+                <th>Tên sản phẩm</th>
+                <th>Giá tiền</th>
+                <th>Thao tác</th>
+            </tr>
+        </thead>
+
+        <tbody id="danhsach"></tbody>
+    </table>
+
+</div>
+
+<script>
+
+    let ds = JSON.parse(localStorage.getItem("DSSP")) || [
+        {id: "SP01", name: "Áo thun", price: 150000},
+        {id: "SP02", name: "Quần jean", price: 250000},
+        {id: "SP03", name: "Giày thể thao", price: 500000}
+    ];
+
+    function hienThi() {
+        let html = "";
+
+        for (let i = 0; i < ds.length; i++) {
+            html += `
+                <tr>
+                    <td>${ds[i].id}</td>
+                    <td>${ds[i].name}</td>
+                    <td>${ds[i].price.toLocaleString("vi-VN")} VNĐ</td>
+                    <td>
+                        <button class="sua" onclick="suaSP('${ds[i].id}')">
+                            Sửa
+                        </button>
+
+                        <button class="xoa" onclick="xoaSP('${ds[i].id}')">
+                            Xóa
+                        </button>
+                    </td>
+                </tr>
+            `;
+        }
+
+        document.getElementById("danhsach").innerHTML = html;
+    }
+
+    function luuDuLieu() {
+        localStorage.setItem("DSSP", JSON.stringify(ds));
+    }
+
+    function themSP() {
+        let masp = document.getElementById("masp").value.trim();
+        let tensp = document.getElementById("tensp").value.trim();
+        let giasp = Number(document.getElementById("giasp").value);
+
+        if (masp == "" || tensp == "" || giasp <= 0) {
+            alert("Vui lòng nhập đầy đủ thông tin!");
+            return;
+        }
+
+        let sp = ds.find(item => item.id === masp);
+
+        if (sp) {
+            alert("Mã sản phẩm đã tồn tại!");
+            return;
+        }
+
+        ds.push({
+            id: masp,
+            name: tensp,
+            price: giasp
+        });
+
+        luuDuLieu();
+        hienThi();
+
+        alert("Thêm sản phẩm thành công!");
+
+        document.getElementById("masp").value = "";
+        document.getElementById("tensp").value = "";
+        document.getElementById("giasp").value = "";
+    }
+
+    function suaSP(masp) {
+        let sp = ds.find(item => item.id === masp);
+
+        let tenMoi = prompt("Nhập tên sản phẩm mới:", sp.name);
+
+        if (tenMoi === null || tenMoi.trim() === "") return;
+
+        let giaMoi = prompt("Nhập giá mới:", sp.price);
+
+        if (giaMoi === null || giaMoi.trim() === "" || Number(giaMoi) <= 0) {
+            alert("Giá không hợp lệ!");
+            return;
+        }
+
+        sp.name = tenMoi.trim();
+        sp.price = Number(giaMoi);
+
+        luuDuLieu();
+        hienThi();
+
+        alert("Cập nhật thành công!");
+    }
+
+    function xoaSP(masp) {
+        if (confirm("Bạn có chắc muốn xóa sản phẩm này?")) {
+            ds = ds.filter(item => item.id !== masp);
+
+            luuDuLieu();
+            hienThi();
+
+            alert("Đã xóa sản phẩm!");
+        }
+    }
+
+    luuDuLieu();
+    hienThi();
+
+</script>
+
+</body>
+</html>
