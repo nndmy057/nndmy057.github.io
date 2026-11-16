@@ -1,0 +1,202 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thế Giới Đại Dương</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #dff7ff;
+            text-align: center;
+            padding: 25px;
+        }
+
+        h1 {
+            color: #087eaa;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #397b91;
+            margin-bottom: 20px;
+        }
+        .aquarium {
+            width: 100%;
+            max-width: 1000px;
+            height: 520px;
+            margin: auto;
+            position: relative;
+            overflow: hidden;
+            border: 10px solid #76c9e8;
+            border-radius: 25px;
+
+            background: linear-gradient(
+                to bottom,
+                #72d9f5,
+                #1599cf,
+                #075c91
+            );
+
+            box-shadow: 0 10px 25px #8bbbc9;
+        }
+        .light {
+            position: absolute;
+            width: 300px;
+            height: 500px;
+            background: #ffffff22;
+            transform: rotate(25deg);
+            top: -100px;
+            left: 15%;
+        }
+        .fish {
+            position: absolute;
+            left: -100px;
+            font-size: 55px;
+            animation: swim 12s linear infinite;
+        }
+
+        .fish1 {
+            top: 100px;
+            animation-duration: 10s;
+        }
+
+        .fish2 {
+            top: 220px;
+            font-size: 45px;
+            animation-duration: 13s;
+            animation-delay: 2s;
+        }
+
+        .fish3 {
+            top: 330px;
+            font-size: 60px;
+            animation-duration: 16s;
+            animation-delay: 1s;
+        }
+
+        .fish4 {
+            top: 160px;
+            font-size: 40px;
+            animation-duration: 11s;
+            animation-delay: 4s;
+        }
+       @keyframes swim {
+    from {
+        left: 100%;
+    }
+
+    to {
+        left: -100px;
+    }
+}
+        .bubble {
+            position: absolute;
+            bottom: -30px;
+            width: 15px;
+            height: 15px;
+            border: 2px solid #ffffffaa;
+            border-radius: 50%;
+            animation: rise 6s infinite ease-in;
+        }
+
+        .b1 {
+            left: 15%;
+        }
+
+        .b2 {
+            left: 35%;
+            animation-delay: 2s;
+        }
+
+        .b3 {
+            left: 60%;
+            animation-delay: 1s;
+        }
+
+        .b4 {
+            left: 80%;
+            animation-delay: 3s;
+        }
+
+        @keyframes rise {
+            0% {
+                bottom: -30px;
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                bottom: 100%;
+                opacity: 0;
+            }
+        }
+
+    
+        .sand {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 45px;
+            background: #e9d49b;
+            border-radius: 50% 50% 0 0;
+        }
+
+        .footer {
+            margin-top: 20px;
+            color: #087eaa;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <h1>🐠 THẾ GIỚI ĐẠI DƯƠNG 🐠</h1>
+
+    <p>
+        Chào mừng bạn đến với hồ cá nhỏ xinh của mình!
+    </p>
+
+    <div class="aquarium">
+
+        <div class="light"></div>
+
+        <!-- Các chú cá -->
+        <div class="fish fish1">🐠</div>
+        <div class="fish fish2">🐟</div>
+        <div class="fish fish3">🐡</div>
+        <div class="fish fish4">🐠</div>
+
+        <!-- Bong bóng nước -->
+        <div class="bubble b1"></div>
+        <div class="bubble b2"></div>
+        <div class="bubble b3"></div>
+        <div class="bubble b4"></div>
+
+        <!-- San hô -->
+        <div class="coral">🪸</div>
+
+        <!-- Đáy hồ -->
+        <div class="sand"></div>
+
+    </div>
+
+    <div class="footer">
+        🌊 Hãy cùng bảo vệ đại dương xanh! 🌊
+    </div>
+
+</body>
+</html>
