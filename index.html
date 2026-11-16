@@ -4,148 +4,222 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trang chủ bài tập của em</title>
+    <title>Quản lý sản phẩm</title>
 
     <style>
-        * {
+        body {
+            font-family: Arial;
+            background-color: #f2f2f2;
             margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+            padding: 20px;
         }
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #f0f4fa;
+        h1 {
+            text-align: center;
             color: #333;
         }
 
-        header {
-            background: #4267a9;
-            color: white;
-            text-align: center;
-            padding: 45px 20px;
-        }
-
-        header h1 {
-            font-size: 32px;
-            margin-bottom: 12px;
-        }
-
-        header p {
-            font-size: 16px;
-        }
-
         .container {
-            width: 90%;
-            max-width: 1000px;
-            margin: 40px auto;
-            text-align: center;
-        }
-
-        .container h2 {
-            margin-bottom: 30px;
-            color: #34558b;
-        }
-
-        .cards {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 25px;
-        }
-
-        .card {
+            max-width: 900px;
+            margin: auto;
             background: white;
-            width: 280px;
-            padding: 30px 20px;
-            border-radius: 15px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            transition: 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-        }
-
-        .card .icon {
-            font-size: 50px;
-            margin-bottom: 15px;
-        }
-
-        .card h3 {
-            color: #4267a9;
-            margin-bottom: 12px;
-        }
-
-        .card p {
-            font-size: 14px;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        .card a {
-            display: inline-block;
-            background: #4267a9;
-            color: white;
-            text-decoration: none;
-            padding: 10px 22px;
-            border-radius: 20px;
-        }
-
-        .card a:hover {
-            background: #294778;
-        }
-
-        footer {
-            text-align: center;
             padding: 25px;
-            margin-top: 40px;
-            background: #4267a9;
+            border-radius: 10px;
+        }
+
+        input {
+            width: 95%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
             color: white;
+            margin: 3px;
+        }
+
+        .them {
+            background-color: #28a745;
+        }
+
+        .sua {
+            background-color: #007bff;
+        }
+
+        .xoa {
+            background-color: #140c0d;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 25px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #0c1418;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
         }
     </style>
 </head>
 
 <body>
 
-    <header>
-        <h1>CHÀO MỪNG ĐẾN VỚI WEBSITE CỦA EM</h1>
-        <p>Nơi tổng hợp các bài tập thực hành thiết kế website</p>
-    </header>
+<div class="container">
 
-    <div class="container">
+    <h1>QUẢN LÝ SẢN PHẨM</h1>
 
-        <h2>📚 DANH SÁCH BÀI TẬP</h2>
+    <h3>Thông tin sản phẩm</h3>
 
-        <div class="cards">
+    <input type="text" id="masp" placeholder="Nhập mã sản phẩm">
 
-            <div class="card">
-                <div class="icon">🐠</div>
-                <h3>Bài 1: Hồ cá</h3>
-                <p>Thiết kế hồ cá hoạt hình với những chú cá bơi lội và bong bóng.</p>
-                <a href="bai1_hoca/index.html">Xem bài tập</a>
-            </div>
+    <input type="text" id="tensp" placeholder="Nhập tên sản phẩm">
 
-            <div class="card">
-                <div class="icon">📄</div>
-                <h3>Bài 2: CV cá nhân</h3>
-                <p>Thiết kế CV cá nhân giới thiệu thông tin và năng lực của bản thân.</p>
-                <a href="bai2_CV/index.html">Xem bài tập</a>
-            </div>
+    <input type="number" id="giasp" placeholder="Nhập giá sản phẩm">
 
-            <div class="card">
-                <div class="icon">🛍️</div>
-                <h3>Bài 3: Quản lý sản phẩm</h3>
-                <p>Thiết kế trang web quản lý hàng hóa và thông tin sản phẩm.</p>
-                <a href="bai3_Sanpham/index.html">Xem bài tập</a>
-            </div>
+    <button class="them" onclick="themSP()">Thêm sản phẩm</button>
 
-        </div>
-    </div>
+    <h3>Danh sách sản phẩm</h3>
 
-    <footer>
-        <p>© 22/11/2026 - Website bài tập thực hành của em</p>
-    </footer>
+    <table>
+        <thead>
+            <tr>
+                <th>Mã SP</th>
+                <th>Tên sản phẩm</th>
+                <th>Giá tiền</th>
+                <th>Thao tác</th>
+            </tr>
+        </thead>
+
+        <tbody id="danhsach"></tbody>
+    </table>
+
+</div>
+
+<script>
+
+    let ds = JSON.parse(localStorage.getItem("DSSP")) || [
+        {id: "SP01", name: "Áo thun", price: 150000},
+        {id: "SP02", name: "Quần jean", price: 250000},
+        {id: "SP03", name: "Giày thể thao", price: 500000}
+    ];
+
+    function hienThi() {
+        let html = "";
+
+        for (let i = 0; i < ds.length; i++) {
+            html += `
+                <tr>
+                    <td>${ds[i].id}</td>
+                    <td>${ds[i].name}</td>
+                    <td>${ds[i].price.toLocaleString("vi-VN")} VNĐ</td>
+                    <td>
+                        <button class="sua" onclick="suaSP('${ds[i].id}')">
+                            Sửa
+                        </button>
+
+                        <button class="xoa" onclick="xoaSP('${ds[i].id}')">
+                            Xóa
+                        </button>
+                    </td>
+                </tr>
+            `;
+        }
+
+        document.getElementById("danhsach").innerHTML = html;
+    }
+
+    function luuDuLieu() {
+        localStorage.setItem("DSSP", JSON.stringify(ds));
+    }
+
+    function themSP() {
+        let masp = document.getElementById("masp").value.trim();
+        let tensp = document.getElementById("tensp").value.trim();
+        let giasp = Number(document.getElementById("giasp").value);
+
+        if (masp == "" || tensp == "" || giasp <= 0) {
+            alert("Vui lòng nhập đầy đủ thông tin!");
+            return;
+        }
+
+        let sp = ds.find(item => item.id === masp);
+
+        if (sp) {
+            alert("Mã sản phẩm đã tồn tại!");
+            return;
+        }
+
+        ds.push({
+            id: masp,
+            name: tensp,
+            price: giasp
+        });
+
+        luuDuLieu();
+        hienThi();
+
+        alert("Thêm sản phẩm thành công!");
+
+        document.getElementById("masp").value = "";
+        document.getElementById("tensp").value = "";
+        document.getElementById("giasp").value = "";
+    }
+
+    function suaSP(masp) {
+        let sp = ds.find(item => item.id === masp);
+
+        let tenMoi = prompt("Nhập tên sản phẩm mới:", sp.name);
+
+        if (tenMoi === null || tenMoi.trim() === "") return;
+
+        let giaMoi = prompt("Nhập giá mới:", sp.price);
+
+        if (giaMoi === null || giaMoi.trim() === "" || Number(giaMoi) <= 0) {
+            alert("Giá không hợp lệ!");
+            return;
+        }
+
+        sp.name = tenMoi.trim();
+        sp.price = Number(giaMoi);
+
+        luuDuLieu();
+        hienThi();
+
+        alert("Cập nhật thành công!");
+    }
+
+    function xoaSP(masp) {
+        if (confirm("Bạn có chắc muốn xóa sản phẩm này?")) {
+            ds = ds.filter(item => item.id !== masp);
+
+            luuDuLieu();
+            hienThi();
+
+            alert("Đã xóa sản phẩm!");
+        }
+    }
+
+    luuDuLieu();
+    hienThi();
+
+</script>
 
 </body>
 </html>
