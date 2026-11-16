@@ -4,222 +4,199 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quản lý sản phẩm</title>
+    <title>Thế Giới Đại Dương</title>
 
     <style>
-        body {
-            font-family: Arial;
-            background-color: #f2f2f2;
+        * {
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #dff7ff;
+            text-align: center;
+            padding: 25px;
         }
 
         h1 {
-            text-align: center;
-            color: #333;
+            color: #087eaa;
+            margin-bottom: 10px;
         }
 
-        .container {
-            max-width: 900px;
-            margin: auto;
-            background: white;
-            padding: 25px;
-            border-radius: 10px;
+        p {
+            color: #397b91;
+            margin-bottom: 20px;
         }
-
-        input {
-            width: 95%;
-            padding: 10px;
-            margin: 8px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        button {
-            padding: 10px 15px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            color: white;
-            margin: 3px;
-        }
-
-        .them {
-            background-color: #28a745;
-        }
-
-        .sua {
-            background-color: #007bff;
-        }
-
-        .xoa {
-            background-color: #140c0d;
-        }
-
-        table {
+        .aquarium {
             width: 100%;
-            border-collapse: collapse;
-            margin-top: 25px;
+            max-width: 1000px;
+            height: 520px;
+            margin: auto;
+            position: relative;
+            overflow: hidden;
+            border: 10px solid #76c9e8;
+            border-radius: 25px;
+
+            background: linear-gradient(
+                to bottom,
+                #72d9f5,
+                #1599cf,
+                #075c91
+            );
+
+            box-shadow: 0 10px 25px #8bbbc9;
+        }
+        .light {
+            position: absolute;
+            width: 300px;
+            height: 500px;
+            background: #ffffff22;
+            transform: rotate(25deg);
+            top: -100px;
+            left: 15%;
+        }
+        .fish {
+            position: absolute;
+            left: -100px;
+            font-size: 55px;
+            animation: swim 12s linear infinite;
         }
 
-        th, td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: center;
+        .fish1 {
+            top: 100px;
+            animation-duration: 10s;
         }
 
-        th {
-            background-color: #0c1418;
-            color: white;
+        .fish2 {
+            top: 220px;
+            font-size: 45px;
+            animation-duration: 13s;
+            animation-delay: 2s;
         }
 
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
+        .fish3 {
+            top: 330px;
+            font-size: 60px;
+            animation-duration: 16s;
+            animation-delay: 1s;
         }
+
+        .fish4 {
+            top: 160px;
+            font-size: 40px;
+            animation-duration: 11s;
+            animation-delay: 4s;
+        }
+       @keyframes swim {
+    from {
+        left: 100%;
+    }
+
+    to {
+        left: -100px;
+    }
+}
+        .bubble {
+            position: absolute;
+            bottom: -30px;
+            width: 15px;
+            height: 15px;
+            border: 2px solid #ffffffaa;
+            border-radius: 50%;
+            animation: rise 6s infinite ease-in;
+        }
+
+        .b1 {
+            left: 15%;
+        }
+
+        .b2 {
+            left: 35%;
+            animation-delay: 2s;
+        }
+
+        .b3 {
+            left: 60%;
+            animation-delay: 1s;
+        }
+
+        .b4 {
+            left: 80%;
+            animation-delay: 3s;
+        }
+
+        @keyframes rise {
+            0% {
+                bottom: -30px;
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                bottom: 100%;
+                opacity: 0;
+            }
+        }
+
+    
+        .sand {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 45px;
+            background: #e9d49b;
+            border-radius: 50% 50% 0 0;
+        }
+
+        .footer {
+            margin-top: 20px;
+            color: #087eaa;
+            font-weight: bold;
+        }
+
     </style>
 </head>
 
 <body>
 
-<div class="container">
+    <h1>🐠 THẾ GIỚI ĐẠI DƯƠNG 🐠</h1>
 
-    <h1>QUẢN LÝ SẢN PHẨM</h1>
+    <p>
+        Chào mừng bạn đến với hồ cá nhỏ xinh của mình!
+    </p>
 
-    <h3>Thông tin sản phẩm</h3>
+    <div class="aquarium">
 
-    <input type="text" id="masp" placeholder="Nhập mã sản phẩm">
+        <div class="light"></div>
 
-    <input type="text" id="tensp" placeholder="Nhập tên sản phẩm">
+        <!-- Các chú cá -->
+        <div class="fish fish1">🐠</div>
+        <div class="fish fish2">🐟</div>
+        <div class="fish fish3">🐡</div>
+        <div class="fish fish4">🐠</div>
 
-    <input type="number" id="giasp" placeholder="Nhập giá sản phẩm">
+        <!-- Bong bóng nước -->
+        <div class="bubble b1"></div>
+        <div class="bubble b2"></div>
+        <div class="bubble b3"></div>
+        <div class="bubble b4"></div>
 
-    <button class="them" onclick="themSP()">Thêm sản phẩm</button>
+        <!-- San hô -->
+        <div class="coral">🪸</div>
 
-    <h3>Danh sách sản phẩm</h3>
+        <!-- Đáy hồ -->
+        <div class="sand"></div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Mã SP</th>
-                <th>Tên sản phẩm</th>
-                <th>Giá tiền</th>
-                <th>Thao tác</th>
-            </tr>
-        </thead>
+    </div>
 
-        <tbody id="danhsach"></tbody>
-    </table>
-
-</div>
-
-<script>
-
-    let ds = JSON.parse(localStorage.getItem("DSSP")) || [
-        {id: "SP01", name: "Áo thun", price: 150000},
-        {id: "SP02", name: "Quần jean", price: 250000},
-        {id: "SP03", name: "Giày thể thao", price: 500000}
-    ];
-
-    function hienThi() {
-        let html = "";
-
-        for (let i = 0; i < ds.length; i++) {
-            html += `
-                <tr>
-                    <td>${ds[i].id}</td>
-                    <td>${ds[i].name}</td>
-                    <td>${ds[i].price.toLocaleString("vi-VN")} VNĐ</td>
-                    <td>
-                        <button class="sua" onclick="suaSP('${ds[i].id}')">
-                            Sửa
-                        </button>
-
-                        <button class="xoa" onclick="xoaSP('${ds[i].id}')">
-                            Xóa
-                        </button>
-                    </td>
-                </tr>
-            `;
-        }
-
-        document.getElementById("danhsach").innerHTML = html;
-    }
-
-    function luuDuLieu() {
-        localStorage.setItem("DSSP", JSON.stringify(ds));
-    }
-
-    function themSP() {
-        let masp = document.getElementById("masp").value.trim();
-        let tensp = document.getElementById("tensp").value.trim();
-        let giasp = Number(document.getElementById("giasp").value);
-
-        if (masp == "" || tensp == "" || giasp <= 0) {
-            alert("Vui lòng nhập đầy đủ thông tin!");
-            return;
-        }
-
-        let sp = ds.find(item => item.id === masp);
-
-        if (sp) {
-            alert("Mã sản phẩm đã tồn tại!");
-            return;
-        }
-
-        ds.push({
-            id: masp,
-            name: tensp,
-            price: giasp
-        });
-
-        luuDuLieu();
-        hienThi();
-
-        alert("Thêm sản phẩm thành công!");
-
-        document.getElementById("masp").value = "";
-        document.getElementById("tensp").value = "";
-        document.getElementById("giasp").value = "";
-    }
-
-    function suaSP(masp) {
-        let sp = ds.find(item => item.id === masp);
-
-        let tenMoi = prompt("Nhập tên sản phẩm mới:", sp.name);
-
-        if (tenMoi === null || tenMoi.trim() === "") return;
-
-        let giaMoi = prompt("Nhập giá mới:", sp.price);
-
-        if (giaMoi === null || giaMoi.trim() === "" || Number(giaMoi) <= 0) {
-            alert("Giá không hợp lệ!");
-            return;
-        }
-
-        sp.name = tenMoi.trim();
-        sp.price = Number(giaMoi);
-
-        luuDuLieu();
-        hienThi();
-
-        alert("Cập nhật thành công!");
-    }
-
-    function xoaSP(masp) {
-        if (confirm("Bạn có chắc muốn xóa sản phẩm này?")) {
-            ds = ds.filter(item => item.id !== masp);
-
-            luuDuLieu();
-            hienThi();
-
-            alert("Đã xóa sản phẩm!");
-        }
-    }
-
-    luuDuLieu();
-    hienThi();
-
-</script>
+    <div class="footer">
+        🌊 Hãy cùng bảo vệ đại dương xanh! 🌊
+    </div>
 
 </body>
 </html>
